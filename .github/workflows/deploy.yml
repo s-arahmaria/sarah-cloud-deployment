@@ -21,7 +21,7 @@ jobs:
           username: "ec2-user"
           port: 22
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "./Dockerfile, ./app.py, ./requirements.txt"
+          source: "codebases/simple_server/Dockerfile,codebases/simple_server/app.py,codebases/simple_server/requirements.txt"
           target: ~/message-server
 
       - name: Build and run on EC2
@@ -33,7 +33,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             set -euo pipefail
-            cd ~/message-server
+            cd ~/message-server/codebases/simple_server
             docker build --pull -t message-server:latest .
             docker stop message-server || true
             docker rm message-server || true
