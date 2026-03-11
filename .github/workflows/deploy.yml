@@ -41,7 +41,7 @@ jobs:
             docker run -d \
               --name message-server \
               --restart unless-stopped \
-              -p 5002:5002 \
+              -p 5001:5001 \
               -e APP_ENV=PRODUCTION \
               -e POSTGRES_USER='${{ secrets.POSTGRES_USER }}' \
               -e POSTGRES_PASSWORD='${{ secrets.POSTGRES_PASSWORD }}' \
